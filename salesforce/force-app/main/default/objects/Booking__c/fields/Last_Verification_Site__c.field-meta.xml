@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Verification_Site__c</fullName>
+    <label>Last Verification Site</label>
+    <type>Text</type>
+    <length>80</length>
+    <required>false</required>
+    <description>Adaptador de la extensión desde el que se hizo la última verificación.</description>
+</CustomField>

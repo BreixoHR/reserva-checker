@@ -1,0 +1,14 @@
+:root { color-scheme: light dark; --accent: #2563eb; }
+body { margin: 0; font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; background: Canvas; color: CanvasText; }
+main { max-width: 520px; margin: 40px auto; padding: 0 16px; }
+h1 { margin: 0; font-size: 22px; }
+.lead { margin: 4px 0 24px; opacity: .75; }
+label { display: block; font-weight: 600; font-size: 14px; margin: 16px 0 6px; }
+input { box-sizing: border-box; width: 100%; padding: 10px 12px; border: 1px solid #94a3b8; border-radius: 8px; font: inherit; background: Field; color: FieldText; }
+.hint { font-size: 13px; opacity: .7; margin: 6px 0 0; }
+.actions { display: flex; gap: 8px; margin-top: 20px; }
+button { padding: 10px 16px; border: 0; border-radius: 8px; font: inherit; font-weight: 600; cursor: pointer; background: var(--accent); color: #fff; }
+button.secondary { background: transparent; color: inherit; border: 1px solid #94a3b8; }
+#status { min-height: 1.5em; font-weight: 600; }
+#status.ok { color: #15803d; }
+#status.error { color: #dc2626; }

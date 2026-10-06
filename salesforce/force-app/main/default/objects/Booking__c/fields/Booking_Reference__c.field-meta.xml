@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Booking_Reference__c</fullName>
+    <label>Booking Reference</label>
+    <type>Text</type>
+    <length>40</length>
+    <externalId>true</externalId>
+    <unique>true</unique>
+    <caseSensitive>false</caseSensitive>
+    <required>false</required>
+    <description>Localizador de la plataforma de venta (lo que teclea el operador).</description>
+</CustomField>

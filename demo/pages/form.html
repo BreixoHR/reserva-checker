@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo · Formulario clásico</title>
+<style>
+  body { font: 16px/1.5 Georgia, serif; background: #f5f1e8; color: #2b2118; margin: 0; }
+  header { background: #5b3a1e; color: #fff; padding: 14px 24px; font-size: 20px; }
+  main { max-width: 520px; margin: 32px auto; padding: 24px; background: #fff; border: 1px solid #d9cbb3; }
+  label { display: block; margin: 14px 0 4px; font-weight: bold; }
+  input, select { font: inherit; padding: 6px; width: 100%; box-sizing: border-box; }
+  button { margin-top: 20px; padding: 10px 24px; font: inherit; background: #5b3a1e; color: #fff; border: 0; cursor: pointer; }
+  #step2 { display: none; padding: 16px; background: #e7f5e1; border: 1px solid #9ccc8a; }
+</style>
+</head>
+<body>
+<header>Monumento Demo · Venta de entradas</header>
+<main>
+  <form id="frmReserva" action="#" method="post">
+    <h2>Paso 1 · Elige fecha y hora</h2>
+    <label for="txtFechaVisita">Fecha de visita (dd/mm/aaaa)</label>
+    <input id="txtFechaVisita" name="ctl00$txtFechaVisita" type="text" placeholder="dd/mm/aaaa">
+    <label for="ddlHora">Hora</label>
+    <select id="ddlHora" name="ctl00$ddlHora">
+      <option>09:00</option><option>10:30</option><option>12:00</option><option>16:30</option>
+    </select>
+    <label for="txtNumEntradas">Número de entradas</label>
+    <input id="txtNumEntradas" name="ctl00$txtNumEntradas" type="number" value="2" min="1">
+    <button type="submit" id="btnContinue">Continuar</button>
+  </form>
+  <div id="step2"><strong>Paso 2 · Pago.</strong> El formulario se ha enviado tras la verificación.</div>
+</main>
+<script>
+  // Fecha por defecto: dentro de 7 días (coincide con la reserva DEMO-001)
+  const d = new Date(); d.setDate(d.getDate() + 7);
+  document.getElementById('txtFechaVisita').value =
+    [d.getDate(), d.getMonth() + 1, d.getFullYear()].map((n) => String(n).padStart(2, '0')).join('/');
+
+  document.getElementById('frmReserva').addEventListener('submit', (e) => {
+    e.preventDefault();
+    e.target.style.display = 'none';
+    document.getElementById('step2').style.display = 'block';
+  });
+</script>
+</body>
+</html>

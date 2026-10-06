@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Reserva Checker</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { margin: 0; width: 240px; padding: 14px; font: 14px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    h1 { font-size: 15px; margin: 0 0 6px; }
+    p { margin: 0 0 12px; opacity: .8; }
+    .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; background: #94a3b8; }
+    .dot.on { background: #16a34a; }
+    button { width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #94a3b8; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Reserva Checker</h1>
+  <p><span id="dot" class="dot"></span><span id="state">Comprobando…</span></p>
+  <button id="options" type="button">Opciones</button>
+  <script src="popup.js"></script>
+</body>
+</html>

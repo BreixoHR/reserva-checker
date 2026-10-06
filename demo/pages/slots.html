@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo · Listado de sesiones</title>
+<style>
+  body { font: 15px/1.5 Helvetica, Arial, sans-serif; background: #fff; color: #1f2937; margin: 0; }
+  header { padding: 16px 24px; border-bottom: 4px solid #0d9488; font-weight: bold; font-size: 20px; }
+  main { max-width: 600px; margin: 24px auto; padding: 0 16px; }
+  .activity { border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; }
+  .activity-date { font-weight: bold; text-transform: capitalize; }
+  .tickets { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .ticket { padding: 8px 14px; border: 1px solid #0d9488; color: #0d9488; border-radius: 999px; cursor: pointer; background: #fff; font: inherit; }
+  .ticket:hover { background: #0d9488; color: #fff; }
+</style>
+</head>
+<body>
+<header>Parque Demo · Horarios disponibles</header>
+<main id="schedule"></main>
+<script>
+  // Fecha textual en español: comprueba que el normalizador entiende "jueves, 15 de octubre de 2026"
+  const fmt = new Intl.DateTimeFormat('es-ES', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  const schedule = document.getElementById('schedule');
+  [7, 8, 14].forEach((offset) => {
+    const d = new Date(); d.setDate(d.getDate() + offset);
+    const block = document.createElement('section');
+    block.className = 'activity';
+    block.innerHTML = `<div class="date"><span class="activity-date">${fmt.format(d)}</span></div><div class="tickets"></div>`;
+    ['09:30', '11:00', '15:30'].forEach((t) => {
+      const b = document.createElement('button');
+      b.className = 'ticket';
+      b.innerHTML = `<span class="ticket-time">${t}</span>`;
+      block.querySelector('.tickets').append(b);
+    });
+    schedule.append(block);
+  });
+</script>
+</body>
+</html>

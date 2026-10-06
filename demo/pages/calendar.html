@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo · Calendario SPA</title>
+<style>
+  body { font: 15px/1.5 "Segoe UI", system-ui, sans-serif; background: #0b1d33; color: #e8eef6; margin: 0; }
+  main { max-width: 560px; margin: 32px auto; padding: 0 16px; }
+  h1 { font-weight: 300; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 20px; }
+  .product, .cal-day, .slot { padding: 8px 12px; border: 1px solid #36506f; border-radius: 6px; background: #12304f; color: inherit; cursor: pointer; font: inherit; }
+  .cal-day { width: 52px; text-align: center; }
+  .is-selected, .cal-day[aria-selected="true"] { background: #f2b134; color: #0b1d33; border-color: #f2b134; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Palacio Demo</h1>
+  <h3>Tipo de visita</h3>
+  <div class="row" id="products">
+    <button class="product is-selected">Visita libre</button>
+    <button class="product">Visita guiada</button>
+  </div>
+  <h3>Día</h3>
+  <div class="row" id="days"></div>
+  <h3>Hora</h3>
+  <div class="row" id="slots"></div>
+</main>
+<script>
+  // Simula una SPA: el estado se refleja en clases/atributos, sin formularios
+  const days = document.getElementById('days');
+  for (let i = 1; i <= 15; i++) {
+    const d = new Date(); d.setDate(d.getDate() + i);
+    const b = document.createElement('button');
+    b.className = 'cal-day';
+    b.textContent = d.getDate();
+    b.setAttribute('aria-label', `${d.getDate()}-${d.getMonth() + 1}-${d.getFullYear()}`); // formato D-M-YYYY
+    b.setAttribute('aria-selected', 'false');
+    b.onclick = () => {
+      days.querySelectorAll('.cal-day').forEach((x) => x.setAttribute('aria-selected', 'false'));
+      b.setAttribute('aria-selected', 'true');
+      renderSlots();
+    };
+    days.append(b);
+  }
+
+  function renderSlots() {
+    const slots = document.getElementById('slots');
+    slots.innerHTML = '';
+    ['10:00', '11:30', '13:00', '17:00'].forEach((t) => {
+      const s = document.createElement('button');
+      s.className = 'slot';
+      s.textContent = t;
+      s.setAttribute('aria-label', t);
+      s.onclick = () => {
+        slots.querySelectorAll('.slot').forEach((x) => x.classList.remove('is-selected'));
+        s.classList.add('is-selected');
+      };
+      slots.append(s);
+    });
+  }
+
+  document.querySelectorAll('.product').forEach((p) => (p.onclick = () => {
+    document.querySelectorAll('.product').forEach((x) => x.classList.remove('is-selected'));
+    p.classList.add('is-selected');
+  }));
+</script>
+</body>
+</html>

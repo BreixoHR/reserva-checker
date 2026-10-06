@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reserva Checker · Demo</title>
+<style>
+  body { font: 16px/1.55 system-ui, sans-serif; max-width: 680px; margin: 40px auto; padding: 0 16px; color: #0f172a; }
+  code { background: #f1f5f9; padding: 1px 6px; border-radius: 4px; }
+  li { margin: 8px 0; }
+  table { border-collapse: collapse; margin: 8px 0 16px; }
+  td, th { border: 1px solid #e2e8f0; padding: 6px 12px; text-align: left; }
+</style>
+</head>
+<body>
+<h1>Reserva Checker · Demo</h1>
+<p>Tres webs de venta de entradas ficticias, una por cada estrategia de adaptador:</p>
+<ul>
+  <li><a href="/demo/form">Formulario clásico</a>: estrategia <code>formSubmit</code> (tipo ASP.NET WebForms)</li>
+  <li><a href="/demo/calendar">Calendario SPA</a>: estrategia <code>selectionWatch</code> (tipo Angular)</li>
+  <li><a href="/demo/slots">Listado de sesiones</a>: estrategia <code>slotClick</code></li>
+</ul>
+<p>Reservas de prueba (en la API mock):</p>
+<table id="bookings"><tr><th>Localizador</th><th>Fecha de visita</th><th>Estado</th></tr></table>
+<p>En las Opciones de la extensión usa el endpoint <code>http://localhost:8787/api/reserva-checker/v3</code> y la API key <code>demo-key</code>.</p>
+<script>
+  fetch('/api/bookings').then((r) => r.json()).then((data) => {
+    const table = document.getElementById('bookings');
+    for (const [ref, b] of Object.entries(data)) {
+      const row = table.insertRow();
+      [ref, b.visitDate.split('-').reverse().join('/'), b.status].forEach((v) => (row.insertCell().textContent = v));
+    }
+  });
+</script>
+</body>
+</html>

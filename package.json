@@ -1,0 +1,15 @@
+{
+  "name": "reserva-checker",
+  "version": "3.0.0",
+  "private": true,
+  "description": "Extensión de Chrome (MV3) + endpoint Apex que verifican la fecha de una reserva antes de comprar entradas",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test",
+    "test:e2e": "node e2e/extension.e2e.mjs",
+    "screenshots": "node e2e/extension.e2e.mjs --screenshots",
+    "demo": "node demo/server.js",
+    "zip": "cd extension && zip -r ../reserva-checker.zip ."
+  },
+  "engines": { "node": ">=18" }
+}

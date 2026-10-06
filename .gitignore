@@ -1,0 +1,6 @@
+node_modules/
+*.zip
+.sf/
+.sfdx/
+salesforce/.sf/
+salesforce/.sfdx/
